@@ -29,7 +29,7 @@ function App() {
     // the main columns for the contact
     const columns = [
       {
-        key: 'id',
+        key: users.id,
         title: 'Id',
         dataIndex: 'id',
         sorter: (a, b) => a.id - b.id,
@@ -41,7 +41,7 @@ function App() {
         sorter: (a, b) => a.name.localeCompare(b.name),
       },
       {
-        key: 'username', 
+        key: 'username',
         title: 'Username',
         dataIndex: 'username',
         sorter: (a, b) => a.username.localeCompare(b.username),
@@ -65,15 +65,14 @@ function App() {
       },
     ];
 
-    const onChange = (pagination, filters, sorter, extra) => {
-      console.log('params', pagination, filters, sorter, extra);
-    };
+    // const onChange = (pagination, filters, sorter, extra) => {
+    //   console.log('params', pagination, filters, sorter, extra);
+    // };
 
     return (
       <Table
         columns={columns}
         dataSource={users}
-        onChange={onChange}
         expandable={{ expandedRowRender }}
         size="small"
       />
