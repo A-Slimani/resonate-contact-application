@@ -29,7 +29,7 @@ function App() {
     // the main columns for the contact
     const columns = [
       {
-        key: users.id,
+        key: 'id',
         title: 'Id',
         dataIndex: 'id',
         sorter: (a, b) => a.id - b.id,
