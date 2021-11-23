@@ -29,9 +29,9 @@ function App() {
     // the main columns for the contact
     const columns = [
       {
+        key: 'id',
         title: 'Id',
         dataIndex: 'id',
-        key: 'id',
         sorter: (a, b) => a.id - b.id,
       },
       {
@@ -41,9 +41,9 @@ function App() {
         sorter: (a, b) => a.name.localeCompare(b.name),
       },
       {
+        key: 'username', 
         title: 'Username',
         dataIndex: 'username',
-        key: 'username',
         sorter: (a, b) => a.username.localeCompare(b.username),
       },
       {
