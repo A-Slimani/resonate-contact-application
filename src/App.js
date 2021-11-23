@@ -35,9 +35,9 @@ function App() {
         sorter: (a, b) => a.id - b.id,
       },
       {
+        key: 'name',
         title: 'Name',
         dataIndex: 'name',
-        key: 'name',
         sorter: (a, b) => a.name.localeCompare(b.name),
       },
       {
@@ -47,20 +47,20 @@ function App() {
         sorter: (a, b) => a.username.localeCompare(b.username),
       },
       {
+        key: 'email',
         title: 'Email',
         dataIndex: 'email',
-        key: 'email',
         sorter: (a, b) => a.email.localeCompare(b.email),
       },
       {
+        key: 'phone',
         title: 'Phone',
         dataIndex: 'phone',
-        key: 'phone',
       },
       {
+        key: 'website',
         title: 'Website',
         dataIndex: 'website',
-        key: 'website',
         sorter: (a, b) => a.website.localeCompare(b.website),
       },
     ];
