@@ -15,23 +15,57 @@ function App() {
     });
   }, []);
 
+  function NestedTable(){
+    const expandedRowRender = () => {
+      const columns = [
+      ]
+    }
+  }
+
+  const columns = [
+    {
+      title: 'id',
+      dataIndex: 'id',
+      sorter: (a, b) => a.id - b.id,
+    },
+    {
+      title: 'name',
+      dataIndex: 'name',
+      sorter: (a, b) => a.name.localeCompare(b.name),
+    },
+    {
+      title: 'username',
+      dataIndex: 'username',
+      sorter: (a, b) => a.username.localeCompare(b.username),
+    },
+    {
+      title: 'email',
+      dataIndex: 'email',
+      sorter: (a, b) => a.email.localeCompare(b.email),
+    },
+    {
+      title: 'phone',
+      dataIndex: 'phone',
+    },
+    {
+      title: 'website',
+      dataIndex: 'website',
+      sorter: (a, b) => a.website.localeCompare(b.website),
+    },
+  ];
+
+  function onChange(pagination, filters, sorter, extra) {
+    console.log('params', pagination, filters, sorter, extra);
+  }
+
   return (
     <>
       <Layout>
         <Header>
           <h1>Contacts</h1>
         </Header>
-        <Content>
-          <Table dataSource={users}>
-            <Column title="address" dataIndex="address" key="address" />
-            <Column title="name" dataIndex="name" key="name" />
-            <Column title="username" dataIndex="username" key="username" />
-            <Column title="email" dataIndex="email" key="email" />
-            <Column title="address" dataIndex="address" key="address" />
-            <Column title="phone" dataIndex="phone" key="phone" />
-            <Column title="website" dataIndex="website" key="website" />
-            <Column title="company" dataIndex="company" key="company" />
-          </Table>
+        <Content style={{ padding: '30px 50px' }}>
+          <Table columns={columns} dataSource={users} onChange={onChange} size="small" />
         </Content>
       </Layout>
     </>
