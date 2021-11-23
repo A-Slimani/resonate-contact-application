@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Layout, Table, Dropdown, Space } from 'antd';
+import { Layout, Table, Card } from 'antd';
 import userService from './services/User';
 import './App.less';
 
@@ -16,14 +16,78 @@ function App() {
   }, []);
 
   const NestedTable = () => {
-    const expandedRowRender = () => {
-      // the secondary columns such as address and Company information
-      const columns = [
-        { title: 'Street', dataIndex: 'address.street', key: 'address.street' },
-        { title: 'Suite', dataIndex: 'address.suite', key: 'address.suite' },
-        { title: 'City', dataIndex: 'address.city', key: 'address.city' },
-        { title: 'Zipcode', dataIndex: 'address.zipcode', key: 'address.zipcode' },
+    const expandedRowRender = index => {
+      // the secondary information: address, company
+
+      // tab list for the user
+      const tabList = [
+        {
+          key: 'Address',
+          tab: 'Address',
+        },
+        {
+          key: 'Company',
+          tab: 'Company',
+        },
       ];
+
+      // the Address content of the user
+      const contentList = {
+        Address: (
+          <>
+            <p>
+              <b>Street</b> : {index.address.street}
+            </p>
+            <p>
+              <b>Suite</b> : {index.address.suite}
+            </p>
+            <p>
+              <b>City</b> : {index.address.city}
+            </p>
+            <p>
+              <b>Zipcode</b> : {index.address.zipcode}
+            </p>
+          </>
+        ),
+        Company: (
+          <>
+            <p>
+              <b>Name</b> : {index.company.name}
+            </p>
+            <p>
+              <b>Catchphrase</b> : {index.company.catchPhrase}
+            </p>
+            <p>
+              <b>Business Service</b> : {index.company.bs}
+            </p>
+          </>
+        ),
+      };
+
+      // sets the tab choice clicked by the user
+      const TabsCard = () => {
+        const [activeTabKey, setActiveTabKey] = useState('Address');
+
+        const onTabChange = key => {
+          setActiveTabKey(key);
+        };
+
+        return (
+          <>
+            <Card
+              tabList={tabList}
+              activeTabKey={activeTabKey}
+              bordered={false}
+              onTabChange={key => {
+                onTabChange(key);
+              }}>
+              {contentList[activeTabKey]}
+            </Card>
+          </>
+        );
+      };
+
+      return <TabsCard />;
     };
 
     // the main columns for the contact
@@ -65,18 +129,13 @@ function App() {
       },
     ];
 
-    console.log(columns)
-
-    // const onChange = (pagination, filters, sorter, extra) => {
-    //   console.log('params', pagination, filters, sorter, extra);
-    // };
-
     return (
       <Table
         columns={columns}
         dataSource={users}
+        rowKey="id"
         expandable={{ expandedRowRender }}
-        size="small"
+        pagination={false}
       />
     );
   };
