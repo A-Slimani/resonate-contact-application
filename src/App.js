@@ -70,7 +70,6 @@ function App() {
 
     return (
       <Table
-        className="components-table-demo-nested"
         columns={columns}
         expandable={{ expandedRowRender }}
         dataSource={data}
