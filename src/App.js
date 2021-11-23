@@ -65,6 +65,8 @@ function App() {
       },
     ];
 
+    console.log(columns)
+
     // const onChange = (pagination, filters, sorter, extra) => {
     //   console.log('params', pagination, filters, sorter, extra);
     // };
