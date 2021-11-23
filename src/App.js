@@ -31,17 +31,6 @@ function App() {
           ),
         },
         { title: 'Upgrade Status', dataIndex: 'upgradeNum', key: 'upgradeNum' },
-        {
-          title: 'Action',
-          dataIndex: 'operation',
-          key: 'operation',
-          render: () => (
-            <Space size="middle">
-              <a>Pause</a>
-              <a>Stop</a>
-            </Space>
-          ),
-        },
       ];
 
       const data = [];
@@ -88,6 +77,8 @@ function App() {
       />
     );
   }
+
+  return <NestedTable /> 
 }
 
 export default App;
