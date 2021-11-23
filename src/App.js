@@ -68,16 +68,15 @@ function App() {
       });
     }
 
+    console.log(data);
+    console.log(data.key);
+
     return (
-      <Table
-        columns={columns}
-        expandable={{ expandedRowRender }}
-        dataSource={data}
-      />
+      <Table columns={columns} expandable={{ expandedRowRender }} dataSource={data} />
     );
   }
 
-  return <NestedTable /> 
+  return <NestedTable />;
 }
 
 export default App;
