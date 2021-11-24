@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Layout, Table, Card } from 'antd';
 import userService from './services/User';
+import Tabs from './components/Tabs';
 import './App.less';
 
 const { Header, Footer, Content } = Layout;
@@ -18,22 +19,8 @@ function App() {
   const NestedTable = () => {
     const expandedRowRender = index => {
       // the secondary information: address, company
-
-      // tab list for the user
-      const tabList = [
-        {
-          key: 'Address',
-          tab: 'Address',
-        },
-        {
-          key: 'Company',
-          tab: 'Company',
-        },
-      ];
-
-      // the Address content of the user
-      const contentList = {
-        Address: (
+      const addressInfo = () => {
+        return (
           <>
             <p>
               <b>Street</b> : {index.address.street}
@@ -48,8 +35,11 @@ function App() {
               <b>Zipcode</b> : {index.address.zipcode}
             </p>
           </>
-        ),
-        Company: (
+        );
+      };
+
+      const companyInfo = () => {
+        return (
           <>
             <p>
               <b>Name</b> : {index.company.name}
@@ -61,33 +51,10 @@ function App() {
               <b>Business Service</b> : {index.company.bs}
             </p>
           </>
-        ),
-      };
-
-      // sets the tab choice clicked by the user
-      const TabsCard = () => {
-        const [activeTabKey, setActiveTabKey] = useState('Address');
-
-        const onTabChange = key => {
-          setActiveTabKey(key);
-        };
-
-        return (
-          <>
-            <Card
-              tabList={tabList}
-              activeTabKey={activeTabKey}
-              bordered={false}
-              onTabChange={key => {
-                onTabChange(key);
-              }}>
-              {contentList[activeTabKey]}
-            </Card>
-          </>
         );
       };
 
-      return <TabsCard />;
+      return <Tabs addressInfo={addressInfo()} companyInfo={companyInfo()} />;
     };
 
     // the main columns for the contact
@@ -142,8 +109,8 @@ function App() {
   return (
     <>
       <Layout>
-        <Header>
-          <h1>Contacts</h1>
+        <Header className="header">
+          <h1 style={{ color: 'white' }}>Contacts</h1>
         </Header>
         <Content style={{ padding: '30px 50px' }}>
           <NestedTable />
