@@ -4,7 +4,7 @@
 
 Clone this application onto your local device using the command 
 
-`git clone https://github.com/AbdullahS98/resonate-contact-application.git`
+`git clone https://github.com/A-Slimani/resonate-contact-application.git`
 
 Run the command `yarn install` to get the required packages
 
